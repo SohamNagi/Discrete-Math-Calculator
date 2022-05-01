@@ -1,8 +1,4 @@
-#import math
-
 from math import floor
-from tabulate import tabulate
-
 
 def gcd(x, y):
   
@@ -16,9 +12,6 @@ def gcd(x, y):
               
     return gcd
   
-print(gcd(5, 10))
-
-
 def next_row(row1, row2):
     q = floor(row1[2]/row2[2])
     a= row1[0]- (q * row2[0])
@@ -27,7 +20,6 @@ def next_row(row1, row2):
     new_row = [a,b,r,q]
     return new_row
 
-
 def eea(x,y):
     row_1 = [1,0, x ,0]
     row_2 = [0,1, y ,0]
@@ -35,14 +27,17 @@ def eea(x,y):
     a=0
     b=1    
     while(True):
-        new_row =  next_row(data[0], data[1])
-        if (new_row[2] == 2):
-            data.append(new_row)
+        new_row =  next_row(data[a], data[b])
+        data.append(new_row)
+        a += 1
+        b += 1
+        if (new_row[2] == 0):
             break
-        else:
-            data.append(new_row)
-    
-    print (tabulate(data, headers=["a", "b", "r", "q"]))
-
         
-    
+    headers = ["a","b","r","q"]
+    format_row = "{:>5}" * (len(headers) + 1)
+    print(format_row.format("", *headers))
+    for team, row in zip(headers, data):
+        print(format_row.format(team, *row))
+        
+eea(40,3)
