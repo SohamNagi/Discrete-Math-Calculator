@@ -42,29 +42,21 @@ def LDE(a,b, c):
         out_b = row[1]*cd
         print(out_a,"a + ",out_b, "b = ", c)
 
-from sqlalchemy import false, true
-
-
-
 def prime(p):
-    print("p=",p)
-    prime=false
+    prime=False
     if (int(p)==2 or int(p)==1):
-        prime=false
+        prime=False
     for number in range(2, int(p)):
-        print("number=",number)
         val=int(p)/int(number)
-        print("val=",val)
         if val.is_integer():
-            prime=true
-            print("done")
+            prime=True
             break
-    if (prime==true):
+    if (prime==True):
         print(p,"num is not prime")
-        return false
+        return False
     else:
         print(p,"num is prime")
-        return true
+        return True
 #prime(3)
 #prime(100)
 #prime(43)
@@ -72,10 +64,9 @@ def prime_factor(fpf):
     pflst=[]
     for number in range(2, math.ceil(math.sqrt(fpf))):
         val=int(fpf)/int(number)
-        print("val=",val)
-        if val.is_integer() and prime(number)==true:
+        if val.is_integer() and prime(number)==True:
             pflst.append(number)
-    print(pflst)
+    print("The prime factors for", fpf,"are: ",pflst)
     return pflst
 
 def print_factors(x):
@@ -84,7 +75,7 @@ def print_factors(x):
    for i in range(1, x + 1):
        if x % i == 0:
            retval.append(i)
-   print(retval)
+   print("The factors for", x,"are: ",retval)
    return retval
 #print_factors(10)
 
@@ -94,19 +85,69 @@ def coprime(x,y):
     same=0
     for elem in x_factors:
         if elem in y_factors:
-            print (elem,"is in ylst")
             same=same+1
     if same==1:
         print(x,"and", y, "are coprime")
-        return true
+        return True
         
     else:
         print(x,"and", y, "are not coprime")
-        return false
+        return False
 
 #coprime(9,90)
 
 def remainder(big,small):
-    print("the remainder of", big, "and",small,"is",int(big)%int(small))
+    print("The remainder of", big, "and",small,"is",int(big)%int(small))
     return int(big)%int(small)
-remainder(15,4)
+#remainder(15,4)
+import time
+
+print('''
+  _      _                                  _            _                 __    _____      _            _       _             
+ | |    (_)                           /\   | |          | |               /_ |  / ____|    | |          | |     | |            
+ | |     _ _ __   ___  __ _ _ __     /  \  | | __ _  ___| |__  _ __ __ _   | | | |     __ _| | ___ _   _| | __ _| |_ ___  _ __ 
+ | |    | | '_ \ / _ \/ _` | '__|   / /\ \ | |/ _` |/ _ \ '_ \| '__/ _` |  | | | |    / _` | |/ __| | | | |/ _` | __/ _ \| '__|
+ | |____| | | | |  __/ (_| | |     / ____ \| | (_| |  __/ |_) | | | (_| |  | | | |___| (_| | | (__| |_| | | (_| | || (_) | |   
+ |______|_|_| |_|\___|\__,_|_|    /_/    \_\_|\__, |\___|_.__/|_|  \__,_|  |_|  \_____\__,_|_|\___|\__,_|_|\__,_|\__\___/|_|   
+                                               __/ |                                                                           
+                                              |___/                                                                            
+    ''')
+while (True):
+    time.sleep(3)1
+    val=int(input('''Input 1 for gcd\nInput 2 for Extended Euclidean Table\nInput 3 for Prime Number Checker\nInput 4 for Linear Diophantine Equation Solver\nInput 5 for Prime Factor List\nInput 6 for Factor List\nInput 7 for Remainder Calculator\nInput 8 for Coprime Checker\nInput 9 for Modulus Calculator\nInput 10 to Quit\nInput:'''))
+    if(val == 1):
+        num1 = int(input("What's your first number: "))
+        num2 = int(input("What's your second number: "))
+        print("The gcd for your numbers is:", gcd(num1,num2))
+    elif (val == 2):
+        num1 = int(input("What's your first number: "))
+        num2 = int(input("What's your second number: "))
+        eea(num1,num2)
+    elif (val == 3):
+        num1 = int(input("What's your number: "))
+        prime(num1)
+    elif (val == 4):
+        num1 = int(input("What's your a value: "))
+        num2 = int(input("What's your b value: "))
+        num3 = int(input("What's your c value: "))
+        LDE(num1,num2,num3)
+    elif (val == 5):
+        p=int(input("Integer:"))
+        prime_factor(p)
+    elif (val == 6):
+         num1 = int(input("What's your number: "))
+         print_factors(num1)
+    elif (val == 7):
+       num1 = int(input("What's your bigger number: "))
+       num2 = int(input("What's your smaller number: "))
+       print("The remainder for your numbers is:", remainder(num1,num2)) 
+    elif (val == 8):
+        num1 = int(input("What's your first number: "))
+        num2 = int(input("What's your second number: "))
+        coprime(num1,num2)
+    elif (val == 9):
+        num1 = int(input("x=a(mod y)\na: "))
+        num2 = int(input("y: "))
+        print("x:", remainder(num1,num2)) 
+    elif val == 10:
+        break
