@@ -1,4 +1,5 @@
 from math import floor
+from math import gcd
 
 def next_row(row1, row2):
     q = floor(row1[2]/row2[2])
@@ -28,5 +29,16 @@ def eea(x,y):
         
     for row in data:
         print('| {:^5} | {:^5} | {:^5} | {:^5} |'.format(*row))
-    return 1     
-eea(789,55)
+    return data[b-1]     
+
+def LDE(a,b, c):
+    if ((c % gcd(a,b)) != 0):
+        print("A solution does not exist!")
+    else:
+        row = eea(a,b)
+        cd = c/gcd(a,b)
+        out_a = row[0]*cd
+        out_b = row[1]*cd
+        print(out_a,"a + ",out_b, "b = ", c)
+
+LDE(84,35,63)
