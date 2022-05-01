@@ -1,5 +1,6 @@
 from math import floor
 from math import gcd
+import math
 
 def next_row(row1, row2):
     q = floor(row1[2]/row2[2])
@@ -41,4 +42,71 @@ def LDE(a,b, c):
         out_b = row[1]*cd
         print(out_a,"a + ",out_b, "b = ", c)
 
-LDE(84,35,63)
+from sqlalchemy import false, true
+
+
+
+def prime(p):
+    print("p=",p)
+    prime=false
+    if (int(p)==2 or int(p)==1):
+        prime=false
+    for number in range(2, int(p)):
+        print("number=",number)
+        val=int(p)/int(number)
+        print("val=",val)
+        if val.is_integer():
+            prime=true
+            print("done")
+            break
+    if (prime==true):
+        print(p,"num is not prime")
+        return false
+    else:
+        print(p,"num is prime")
+        return true
+#prime(3)
+#prime(100)
+#prime(43)
+def prime_factor(fpf):
+    pflst=[]
+    for number in range(2, math.ceil(math.sqrt(fpf))):
+        val=int(fpf)/int(number)
+        print("val=",val)
+        if val.is_integer() and prime(number)==true:
+            pflst.append(number)
+    print(pflst)
+    return pflst
+
+def print_factors(x):
+   retval=[]
+   print("The factors of",x,"are:")
+   for i in range(1, x + 1):
+       if x % i == 0:
+           retval.append(i)
+   print(retval)
+   return retval
+#print_factors(10)
+
+def coprime(x,y):
+    x_factors=print_factors(x)
+    y_factors=print_factors(y)
+    same=0
+    for elem in x_factors:
+        if elem in y_factors:
+            print (elem,"is in ylst")
+            same=same+1
+    if same==1:
+        print(x,"and", y, "are coprime")
+        return true
+        
+    else:
+        print(x,"and", y, "are not coprime")
+        return false
+
+#coprime(9,90)
+
+def remainder(big,small):
+    print("the remainder of", big, "and",small,"is",int(big)%int(small))
+    return int(big)%int(small)
+remainder(15,4)
