@@ -113,7 +113,7 @@ print('''
                                               |___/                                                                            
     ''')
 while (True):
-    time.sleep(3)1
+    time.sleep(3)
     val=int(input('''Input 1 for gcd\nInput 2 for Extended Euclidean Table\nInput 3 for Prime Number Checker\nInput 4 for Linear Diophantine Equation Solver\nInput 5 for Prime Factor List\nInput 6 for Factor List\nInput 7 for Remainder Calculator\nInput 8 for Coprime Checker\nInput 9 for Modulus Calculator\nInput 10 to Quit\nInput:'''))
     if(val == 1):
         num1 = int(input("What's your first number: "))
